@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: http://localhost:7400/sitemap.xml
