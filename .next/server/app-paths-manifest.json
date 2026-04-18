@@ -1,11 +1,6 @@
 {
   "/admin/login/page": "app/admin/login/page.js",
   "/admin/page": "app/admin/page.js",
-  "/icon.png/route": "app/icon.png/route.js",
-  "/api/public/cacti/route": "app/api/public/cacti/route.js",
-  "/api/public/blogs/route": "app/api/public/blogs/route.js",
-  "/api/public/heroes/route": "app/api/public/heroes/route.js",
-  "/api/public/news/route": "app/api/public/news/route.js",
   "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/about/page": "app/[locale]/about/page.js",
   "/[locale]/catalogue/page": "app/[locale]/catalogue/page.js"
