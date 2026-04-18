@@ -1,14 +1,11 @@
 {
   "/admin/login/page": "app/admin/login/page.js",
   "/admin/page": "app/admin/page.js",
-  "/api/about/route": "app/api/about/route.js",
   "/icon.png/route": "app/icon.png/route.js",
   "/api/public/cacti/route": "app/api/public/cacti/route.js",
-  "/api/admin/cacti/route": "app/api/admin/cacti/route.js",
-  "/api/admin/blogs/route": "app/api/admin/blogs/route.js",
-  "/api/admin/heroes/route": "app/api/admin/heroes/route.js",
-  "/api/admin/about/route": "app/api/admin/about/route.js",
-  "/api/admin/news/route": "app/api/admin/news/route.js",
+  "/api/public/blogs/route": "app/api/public/blogs/route.js",
+  "/api/public/heroes/route": "app/api/public/heroes/route.js",
+  "/api/public/news/route": "app/api/public/news/route.js",
   "/[locale]/page": "app/[locale]/page.js",
   "/[locale]/about/page": "app/[locale]/about/page.js",
   "/[locale]/catalogue/page": "app/[locale]/catalogue/page.js"
