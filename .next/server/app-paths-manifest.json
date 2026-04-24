@@ -1,11 +1,10 @@
 {
-  "/icon.png/route": "app/icon.png/route.js",
-  "/api/public/blogs/route": "app/api/public/blogs/route.js",
-  "/api/about/route": "app/api/about/route.js",
-  "/api/public/cacti/route": "app/api/public/cacti/route.js",
-  "/api/public/news/route": "app/api/public/news/route.js",
-  "/api/currency/route": "app/api/currency/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/public/heroes/route": "app/api/public/heroes/route.js",
+  "/api/public/blogs/route": "app/api/public/blogs/route.js",
+  "/api/public/news/route": "app/api/public/news/route.js",
+  "/icon.png/route": "app/icon.png/route.js",
+  "/api/currency/route": "app/api/currency/route.js",
+  "/api/public/cacti/route": "app/api/public/cacti/route.js",
+  "/api/about/route": "app/api/about/route.js",
   "/[locale]/page": "app/[locale]/page.js"
 }
