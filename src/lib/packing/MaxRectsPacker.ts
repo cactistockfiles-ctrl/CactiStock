@@ -79,7 +79,7 @@ export class MaxRectsPacker {
             x: placement.x,
             y: placement.y,
             width: orientation.width,
-            length: box.lengthCm, // Keep original length for reference
+            length: orientation.length, // FIXED: Use rotated orientation, not original
             height: orientation.height,
             rotation: orientation.key,
           };

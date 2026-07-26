@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveAppUrl } from "@/lib/app-url";
 
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const USERINFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo";
 
 export async function GET(req: NextRequest) {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || req.nextUrl.origin;
+  const appUrl = resolveAppUrl(req);
   const code = req.nextUrl.searchParams.get("code");
   const state = req.nextUrl.searchParams.get("state");
   const defaultRedirect = `${appUrl}/auth/google/success`;

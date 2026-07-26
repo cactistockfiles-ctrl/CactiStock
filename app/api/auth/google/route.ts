@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveAppUrl } from "@/lib/app-url";
 
 const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 
 export async function GET(req: NextRequest) {
   const redirect = req.nextUrl.searchParams.get("redirect") || "";
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || req.nextUrl.origin;
+  const appUrl = resolveAppUrl(req);
   const callbackUrl = `${appUrl}/api/auth/callback/google`;
   const state = Buffer.from(
     JSON.stringify({ redirect: redirect || `${appUrl}/auth/google/success` }),

@@ -29,7 +29,7 @@ export class BoxSelector {
     }
 
     const layers: Layer[] = [];
-    const remainingBoxes = [...smallBoxes];
+    let remainingBoxes = [...smallBoxes];
     let totalHeight = config.bottomFiller;
 
     // Pack layer by layer
@@ -73,8 +73,12 @@ export class BoxSelector {
       layers.push(layer);
 
       // Remove packed boxes from remaining
+      // IMPORTANT: Filter by plantId, not by count!
+      // splice(0, count) would remove wrong boxes if multiple plant types exist
       const packedIds = new Set(placements.map((p) => p.plantId));
-      remainingBoxes.splice(0, packedCount);
+      remainingBoxes = remainingBoxes.filter(
+        (box) => !packedIds.has(box.plantId)
+      );
 
       // Update total height
       totalHeight += height + config.layerFiller;
@@ -87,8 +91,10 @@ export class BoxSelector {
 
     // Calculate statistics
     const totalBoxesPacked = LayerManager.countPackedBoxes(layers);
+    // FIXED: totalHeight already includes topFiller from line 92, don't add again
+    const finalTotalHeight = totalHeight + config.topFiller;
     const usedVolume =
-      internalWidth * internalLength * (totalHeight + config.topFiller);
+      internalWidth * internalLength * finalTotalHeight;
     const boxVolume = shippingBox.volumeCm3;
     const freeVolume = boxVolume - usedVolume;
     const utilization = (usedVolume / boxVolume) * 100;
@@ -97,7 +103,7 @@ export class BoxSelector {
       shippingBox,
       layers,
       totalBoxesPacked,
-      totalHeight: totalHeight + config.topFiller,
+      totalHeight: finalTotalHeight,
       usedVolume,
       freeVolume,
       utilization,

@@ -278,12 +278,26 @@ export function validatePackingSettingsJson(obj: unknown): { ok: boolean; errors
   const maybe = obj as any;
 
   // Validate new PackingConfig format (bottomFiller, topFiller, layerFiller)
-  for (const numKey of ["bottomFiller", "topFiller", "layerFiller"]) {
-    if (maybe[numKey] !== undefined) {
-      const val = Number(maybe[numKey]);
-      if (!Number.isFinite(val) || val < 0) {
-        errors.push(`${numKey} must be a non-negative number`);
-      }
+  const requiredFields = ["bottomFiller", "topFiller", "layerFiller"];
+  for (const numKey of requiredFields) {
+    // Check if field is missing or null
+    if (maybe[numKey] === undefined || maybe[numKey] === null) {
+      errors.push(`${numKey} is required`);
+      continue;
+    }
+
+    const val = Number(maybe[numKey]);
+    if (!Number.isFinite(val)) {
+      errors.push(`${numKey} must be a number`);
+      continue;
+    }
+    if (val < 0) {
+      errors.push(`${numKey} must be non-negative`);
+      continue;
+    }
+    if (val > 10) {
+      errors.push(`${numKey} must be less than 10cm`);
+      continue;
     }
   }
 
