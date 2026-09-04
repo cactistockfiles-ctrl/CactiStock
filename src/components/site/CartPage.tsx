@@ -55,8 +55,10 @@ const PAYMENT_METHODS = [
 ];
 
 const BANK_ACCOUNT = {
-  id: "scb",
-  bankName: "ธนาคารไทยพาณิชย์ (SCB)",
+  id: "bangkok-bank",
+  bankName: "ธนาคารกรุงเทพ",
+  logoSrc: "/bangkok-bank-logo.svg",
+  qrCodeSrc: "/bangkok-bank-qr.jpg",
   accountName: "Thitaree Weerawitporn",
   accountNumber: "125-4-70521-1",
   branch: "Samutprakarn",
@@ -1026,15 +1028,25 @@ export default function CartPage() {
                 </p>
 
                 <div className="space-y-3 rounded-xl bg-background p-3 text-sm text-foreground">
-                  <p className="font-semibold">
-                    {selectedBankAccount.bankName}
-                  </p>
+                  <img
+                    src={selectedBankAccount.logoSrc}
+                    alt={selectedBankAccount.bankName}
+                    className="h-28 w-full max-w-[220px] rounded-xl  border-border bg-white object-contain p-2 shadow-sm"
+                  />
+
                   <p>ชื่อบัญชี: {selectedBankAccount.accountName}</p>
                   <p>เลขบัญชี: {selectedBankAccount.accountNumber}</p>
                   <p>สาขา: {selectedBankAccount.branch}</p>
                   <p>Bank code: {selectedBankAccount.bankCode}</p>
                   <p>Address: {selectedBankAccount.holderAddress}</p>
                   <p>Tel: {selectedBankAccount.phone}</p>
+                  <div className="mt-4 flex justify-center">
+                    <img
+                      src={selectedBankAccount.qrCodeSrc}
+                      alt="Bank transfer QR code"
+                      className="h-68  rounded-xl  shadow-sm"
+                    />
+                  </div>
                 </div>
 
                 <div>
